@@ -1,288 +1,517 @@
 ---
-metadata:
-  exam_board: "OCR"
-  paper_code: "J277/01"
-  topic: "1.6 Ethical, legal, cultural and environmental impacts"
-  max_marks: 8
-
 question:
-  id: "Q1"
-  prompt: >
-    A family decides to install voice-activated smart speakers in every room of their house. 
-    The devices are connected to the internet, control the home's heating and lighting, 
-    and continuously listen for a "wake word" to process commands via the manufacturer's cloud servers.
+  id: Q1-MEDTECH
+  prompt: |
+    The use of digital technology in medicine is constantly evolving.
     
-    Discuss the impact of the family installing these voice-activated smart devices in their home.
+    Discuss the impact of digital technology on medicine including:
+    • diagnosing patients
+    • treating patients
+    • storage of records.
   requirements:
-    - "ethical issues"
-    - "privacy issues"
-    - "legal issues"
-
+    - Discuss diagnosing
+    - Discuss treating
+    - Discuss record storage
+    - Provide a balanced argument
+metadata:
+  topic: Ethical, Legal & Environmental
+  exam_board: OCR
+  paper_code: J277/01
+  max_marks: 8
 answer:
   segments:
-    - text: "The installation of smart speakers in the home introduces several new impacts. "
-    - highlight_id: "mark_legal_1"
-      text: "Legally, the manufacturer of the smart speaker must comply with the Data Protection Act (DPA). "
-    - text: "Because the devices process user data in the cloud, "
-    - highlight_id: "mark_legal_2"
-      text: "the data must be kept securely to prevent breaches, and the family must agree to terms and conditions regarding data usage. "
-    - highlight_id: "mark_ethical_1"
-      text: "Ethically, a positive impact is that the devices provide significant accessibility benefits, allowing users with mobility issues to control heating easily. "
-    - text: "However, "
-    - highlight_id: "mark_privacy_1"
-      text: "a negative privacy issue is that the devices are 'always listening' for a wake word, making users and unaware guests feel like they are under constant surveillance in their own home. "
-    - highlight_id: "mark_conclusion"
-      text: "Overall, the family must weigh the immense convenience and accessibility benefits against the severe privacy risks of continuous audio monitoring."
-
+    - text: "Digital technology has a massive impact on medicine. For diagnosing patients, "
+    - text: "AI and automated equipment can be used to quickly search through records and identify patterns of symptoms"
+      highlight_id: "diag-1"
+    - text: ", which means diseases can be spotted faster than a human doctor could. However, "
+    - text: "if the software has an error or bias, it might miss some symptoms and give incorrect results."
+      highlight_id: "diag-2"
+    - text: "\n\nWhen treating patients, "
+    - text: "automated robotic surgery allows patients to be operated on by specialists who are in a completely different country."
+      highlight_id: "treat-1"
+    - text: " A negative of this is that "
+    - text: "there is less human interaction which can be scary for the patient, and if the network drops or gets hacked, it could be fatal."
+      highlight_id: "treat-2"
+    - text: "\n\nFinally, for storing records, "
+    - text: "centralised cloud storage means any medical professional involved in care can access the patient's history immediately."
+      highlight_id: "store-1"
+    - text: " But "
+    - text: "putting all this sensitive data in one central place creates a huge target for hackers, raising major privacy concerns if personal data is leaked."
+      highlight_id: "store-2"
 walkthrough:
   total_marks_awarded: 8
-  band_achieved: "Band 3 (High Level)"
+  band_achieved: "Mark Band 3 - High Level"
   steps:
     - step_number: 1
-      highlight_id: "mark_legal_1"
+      highlight_id: "diag-1"
+      explanation: "Excellent point regarding diagnosis. The student identifies the ability of AI to find patterns faster than humans (indicative content: identify patterns/more accurate)."
       marks_gained: 1
-      explanation: "Identifies a relevant piece of legislation (Data Protection Act) applicable to the context."
     - step_number: 2
-      highlight_id: "mark_legal_2"
-      marks_gained: 2
-      explanation: "Expands on the legal point by explaining the requirements of the DPA (keeping data secure, terms and conditions)."
-    - step_number: 3
-      highlight_id: "mark_ethical_1"
-      marks_gained: 2
-      explanation: "Provides a balanced view by introducing a positive ethical impact (accessibility/mobility benefits)."
-    - step_number: 4
-      highlight_id: "mark_privacy_1"
-      marks_gained: 2
-      explanation: "Identifies a negative privacy issue ('always listening' / surveillance of guests). Covers the final required bullet point."
-    - step_number: 5
-      highlight_id: "mark_conclusion"
+      highlight_id: "diag-2"
+      explanation: "Shows balanced discussion by providing a negative impact for diagnosis (indicative content: may miss symptoms/incorrect results)."
       marks_gained: 1
-      explanation: "Provides a well-developed conclusion weighing both sides of the argument, achieving maximum marks."
+    - step_number: 3
+      highlight_id: "treat-1"
+      explanation: "Strong application to treatment. Identifies remote surgery as a key benefit (indicative content: access to specialists not local)."
+      marks_gained: 1
+    - step_number: 4
+      highlight_id: "treat-2"
+      explanation: "Again, balances the argument by discussing the risks of remote/automated treatment, including hacking and lack of human touch."
+      marks_gained: 2
+    - step_number: 5
+      highlight_id: "store-1"
+      explanation: "Addresses the third bullet point clearly. Mentions centralised storage allowing widespread access for care professionals."
+      marks_gained: 1
+    - step_number: 6
+      highlight_id: "store-2"
+      explanation: "Concludes with strong security and privacy concerns regarding centralised storage. Overall, thorough knowledge, well-structured, covers all areas."
+      marks_gained: 2
 
 ---
-metadata:
-  exam_board: "OCR"
-  paper_code: "J277/01"
-  topic: "1.6 Ethical, legal, cultural and environmental impacts"
-  max_marks: 8
-
 question:
-  id: "Q2"
-  prompt: >
-    Social networking websites use artificial intelligence (AI) to automatically monitor posts and images uploaded by users. 
+  id: Q2-EWASTE
+  prompt: |
+    People often want to buy the most up-to-date smartphones, even though the smartphone they own still works.
     
-    Discuss the positive and negative uses of AI by social networking websites.
+    Discuss the impact of people wanting to upgrade to the latest smartphone.
+    
+    In your answer, you might consider the impact on:
+    • smartphone users
+    • cultural issues
+    • ethical issues
+    • environmental issues.
   requirements:
-    - "Legal issues"
-    - "Ethical issues"
-    - "Privacy issues"
-
+    - Mention smartphone users
+    - Mention cultural/ethical issues
+    - Mention environmental issues
+    - Weigh up both sides
+metadata:
+  topic: Ethical, Legal & Environmental
+  exam_board: OCR
+  paper_code: J277/01
+  max_marks: 8
 answer:
   segments:
-    - text: "The use of AI to monitor posts has significant implications. "
-    - highlight_id: "mark_legal_1"
-      text: "Legally, AI helps the platform enforce the Copyright Designs and Patents Act by instantly flagging and removing plagiarized or copyrighted videos. "
-    - highlight_id: "mark_legal_2"
-      text: "However, the platform must ensure the AI complies with the Data Protection Act by not using the scanned personal data for unauthorized purposes. "
-    - highlight_id: "mark_ethical_1"
-      text: "Ethically, AI works 24/7 to rapidly identify and remove harmful content like cyberbullying, creating a safer environment. "
-    - text: "Conversely, "
-    - highlight_id: "mark_ethical_2"
-      text: "AI lacks human context and may incorrectly block legitimate posts, which can be seen as unfair censorship. "
-    - highlight_id: "mark_privacy_1"
-      text: "From a privacy perspective, continuous AI monitoring creates a feeling of constant surveillance, even though users technically agree to this in the Terms and Conditions."
-
+    - text: "Upgrading smartphones constantly has several impacts. Environmentally, "
+    - text: "modern phones are poorly designed for durability and cannot be easily upgraded by the user."
+      highlight_id: "env-1"
+    - text: " Because people throw away perfectly working phones, "
+    - text: "it leads to massive amounts of e-waste in landfills."
+      highlight_id: "env-2"
+    - text: " "
+    - text: "This toxic waste can leak into the land and water, often in developing countries where the waste is sent."
+      highlight_id: "env-3"
+    - text: "\n\nCulturally and ethically, "
+    - text: "there is a desire to own the newest device just to fit in with peers."
+      highlight_id: "cult-1"
+    - text: " This puts a lot of "
+    - text: "social pressure on parents to spend money they might not have"
+      highlight_id: "eth-1"
+    - text: " just so their children aren't bullied for having old technology. This widens the digital and social divide. "
+    - text: "However, for the smartphone users themselves, a benefit is that they get new features that might make their work or leisure activities much more efficient."
+      highlight_id: "user-1"
 walkthrough:
-  total_marks_awarded: 8
-  band_achieved: "Band 3 (High Level)"
+  total_marks_awarded: 7
+  band_achieved: "Mark Band 3 - High Level"
   steps:
     - step_number: 1
-      highlight_id: "mark_legal_1"
-      marks_gained: 2
-      explanation: "Identifies the Copyright Act and provides a positive application of AI (removing stolen content)."
+      highlight_id: "env-1"
+      explanation: "Identifies the issue with manufacturer design (planned obsolescence / lack of upgradeability)."
+      marks_gained: 1
     - step_number: 2
-      highlight_id: "mark_legal_2"
+      highlight_id: "env-2"
+      explanation: "Clearly links the upgrading habit to the creation of e-waste and landfill usage."
       marks_gained: 1
-      explanation: "Identifies the DPA and relates it to the negative risk of unauthorized data use."
     - step_number: 3
-      highlight_id: "mark_ethical_1"
-      marks_gained: 2
-      explanation: "Explains a positive ethical impact (removing harmful content / cyberbullying rapidly)."
-    - step_number: 4
-      highlight_id: "mark_ethical_2"
+      highlight_id: "env-3"
+      explanation: "Expands on the environmental point by mentioning toxic waste and the impact abroad. Very strong point."
       marks_gained: 1
-      explanation: "Explains a negative ethical impact (false positives / unfair censorship)."
+    - step_number: 4
+      highlight_id: "cult-1"
+      explanation: "Hits the cultural aspect - the peer pressure and desire to fit in."
+      marks_gained: 1
     - step_number: 5
-      highlight_id: "mark_privacy_1"
+      highlight_id: "eth-1"
+      explanation: "Hits the ethical aspect by discussing financial pressure on parents and the potential for bullying/social divide."
       marks_gained: 2
-      explanation: "Addresses the privacy requirement, noting the feeling of surveillance and referencing Terms and Conditions."
+    - step_number: 6
+      highlight_id: "user-1"
+      explanation: "Provides a balanced view by mentioning the positive impact on the user (new features for work/leisure). Highly structured and relevant."
+      marks_gained: 1
 
 ---
-metadata:
-  exam_board: "OCR"
-  paper_code: "J277/01"
-  topic: "1.6 Ethical, legal, cultural and environmental impacts"
-  max_marks: 8
-
 question:
-  id: "Q3"
-  prompt: >
-    A health insurance company offers cheaper premiums to customers who wear a smartwatch. The smartwatch monitors their daily exercise, heart rate, and GPS location, sending this data back to the company.
-    
-    Discuss the issues surrounding this use of wearable technology.
+  id: Q3-CPU
+  prompt: |
+    Explain how the cache size, clock speed, and number of cores affect the performance of a CPU.
   requirements:
-    - "Ethical issues"
-    - "Legal issues"
-    - "Privacy issues"
-
+    - Explain Cache Size
+    - Explain Clock Speed
+    - Explain Number of Cores
+metadata:
+  topic: Systems Architecture
+  exam_board: AQA
+  paper_code: Paper 1
+  max_marks: 6
 answer:
   segments:
-    - text: "Using smartwatches for health insurance premiums creates several debates. "
-    - highlight_id: "mark_ethical_1"
-      text: "Ethically, a positive impact is that it financially incentivizes customers to lead a healthier lifestyle and exercise more. "
-    - text: "However, "
-    - highlight_id: "mark_ethical_2"
-      text: "it is highly unethical because it discriminates against disabled or elderly individuals who cannot easily exercise, forcing them to pay higher premiums. "
-    - highlight_id: "mark_legal_1"
-      text: "Legally, the insurance company must strictly adhere to the Data Protection Act. "
-    - highlight_id: "mark_legal_2"
-      text: "Because health data is highly sensitive, it must be kept extremely secure to prevent hackers from stealing it. "
-    - highlight_id: "mark_privacy_1"
-      text: "Privacy is a major concern, as the GPS tracker means the company knows the user's exact location at all times, leading to a loss of personal anonymity."
-
+    - text: "Cache is memory built into the CPU that is faster than RAM. "
+    - text: "A larger cache size means more frequently used data and instructions can be stored closer to the CPU, meaning it doesn't have to wait for the slower RAM as often, improving performance."
+      highlight_id: "cache"
+    - text: "\n\nClock speed is how many cycles the CPU can do per second. "
+    - text: "A higher clock speed means more instructions can be fetched, decoded and executed every second."
+      highlight_id: "clock"
+    - text: "\n\nFinally, the number of cores is how many processing units the CPU has. "
+    - text: "More cores allow for parallel processing, meaning multiple instructions can be processed at the exact same time, speeding up multitasking."
+      highlight_id: "cores"
 walkthrough:
-  total_marks_awarded: 8
-  band_achieved: "Band 3 (High Level)"
+  total_marks_awarded: 6
+  band_achieved: "Full Marks"
   steps:
     - step_number: 1
-      highlight_id: "mark_ethical_1"
-      marks_gained: 1
-      explanation: "Identifies a clear positive ethical outcome (encouraging healthy lifestyles)."
+      highlight_id: "cache"
+      explanation: "Correctly identifies what cache stores (frequently used data) AND explains the performance benefit (reduces fetch time from RAM). Awards 2 marks."
+      marks_gained: 2
     - step_number: 2
-      highlight_id: "mark_ethical_2"
+      highlight_id: "clock"
+      explanation: "Correctly defines clock speed's impact on performance (more FDE cycles / instructions per second). Awards 2 marks."
       marks_gained: 2
-      explanation: "Provides a strong counter-argument regarding discrimination, showing excellent contextual understanding."
     - step_number: 3
-      highlight_id: "mark_legal_1"
-      marks_gained: 1
-      explanation: "Correctly identifies the DPA in relation to storing user data."
-    - step_number: 4
-      highlight_id: "mark_legal_2"
+      highlight_id: "cores"
+      explanation: "Correctly explains that multiple cores allow parallel processing/multitasking, executing multiple instructions simultaneously. Awards 2 marks."
       marks_gained: 2
-      explanation: "Expands on the legal point by highlighting the sensitivity of health data and the need for security against hacking."
-    - step_number: 5
-      highlight_id: "mark_privacy_1"
-      marks_gained: 2
-      explanation: "Addresses the privacy concern regarding continuous GPS location tracking."
 
 ---
-metadata:
-  exam_board: "OCR"
-  paper_code: "J277/01"
-  topic: "1.6 Ethical, legal, cultural and environmental impacts"
-  max_marks: 8
-
 question:
-  id: "Q4"
-  prompt: >
-    Consumers are increasingly upgrading their smartphones every 1 to 2 years, discarding their old devices.
-    
-    Discuss the impacts of this rapid upgrade cycle.
+  id: Q4-STORAGE
+  prompt: |
+    A student is buying a new laptop for school work and playing games. Discuss the advantages and disadvantages of choosing a Solid State Drive (SSD) rather than a Magnetic Hard Disk Drive (HDD).
   requirements:
-    - "Environmental impacts"
-    - "Cultural impacts"
-
+    - State advantages of SSD
+    - State disadvantages of SSD vs HDD
+    - Relate to context (school work / games)
+metadata:
+  topic: Memory and Storage
+  exam_board: Edexcel
+  paper_code: Paper 1
+  max_marks: 6
 answer:
   segments:
-    - text: "The trend of rapidly upgrading smartphones has severe consequences. "
-    - highlight_id: "mark_env_1"
-      text: "Environmentally, discarded phones contribute to massive amounts of e-waste in landfills, where toxic chemicals like lead and battery acid can leak into the soil and water. "
-    - highlight_id: "mark_env_2"
-      text: "Furthermore, manufacturing millions of new phones yearly heavily depletes finite natural resources, as rare earth metals must be continuously mined. "
-    - highlight_id: "mark_cult_1"
-      text: "Culturally, this trend widens the digital divide, creating inequality between those who can afford the latest technology and those who cannot. "
-    - highlight_id: "mark_cult_2"
-      text: "It also creates intense social pressure and consumerism, especially among teenagers, who may feel bullied or left out if they do not have the newest smartphone model. "
-    - highlight_id: "mark_conclusion"
-      text: "In conclusion, while consumers enjoy new features, the devastating cost to the environment and the negative social pressures far outweigh the benefits."
-
+    - text: "An advantage of an SSD is that "
+    - text: "it has much faster read and write speeds than an HDD."
+      highlight_id: "adv-1"
+    - text: " "
+    - text: "This is great for the student because it means their laptop will boot up faster and their games will have shorter loading screens."
+      highlight_id: "adv-2"
+    - text: " Also, "
+    - text: "SSDs have no moving parts, so they are more durable and won't break easily if the student drops their laptop in their school bag."
+      highlight_id: "adv-3"
+    - text: "\n\nA disadvantage is that "
+    - text: "SSDs are more expensive per Gigabyte than HDDs."
+      highlight_id: "dis-1"
+    - text: " Therefore, "
+    - text: "the student might have to settle for a smaller capacity drive, which could be an issue if modern games take up a lot of storage space."
+      highlight_id: "dis-2"
 walkthrough:
-  total_marks_awarded: 8
-  band_achieved: "Band 3 (High Level)"
+  total_marks_awarded: 5
+  band_achieved: "High Level"
   steps:
     - step_number: 1
-      highlight_id: "mark_env_1"
-      marks_gained: 2
-      explanation: "Clearly explains the environmental issue of e-waste and the specific danger of toxic chemical leakage."
+      highlight_id: "adv-1"
+      explanation: "Identifies a technical advantage (faster read/write speeds)."
+      marks_gained: 1
     - step_number: 2
-      highlight_id: "mark_env_2"
-      marks_gained: 2
-      explanation: "Provides a second environmental point regarding the depletion of natural resources and mining."
+      highlight_id: "adv-2"
+      explanation: "Contextualises the speed advantage perfectly to the scenario (faster game loading times/boot times)."
+      marks_gained: 1
     - step_number: 3
-      highlight_id: "mark_cult_1"
+      highlight_id: "adv-3"
+      explanation: "Identifies a second advantage (durability/no moving parts) and relates to carrying it to school."
       marks_gained: 1
-      explanation: "Identifies the cultural impact of the digital divide and inequality."
     - step_number: 4
-      highlight_id: "mark_cult_2"
-      marks_gained: 2
-      explanation: "Expands on cultural impacts by discussing social pressure, consumerism, and bullying."
-    - step_number: 5
-      highlight_id: "mark_conclusion"
+      highlight_id: "dis-1"
+      explanation: "Correctly identifies a major disadvantage (cost per GB)."
       marks_gained: 1
-      explanation: "Offers a strong, justified conclusion that weighs the impacts, securing the top band."
+    - step_number: 5
+      highlight_id: "dis-2"
+      explanation: "Contextualises the disadvantage (smaller capacity for large games). Missed out on a 6th mark for not mentioning HDD lifespan or data recovery."
+      marks_gained: 1
 
 ---
-metadata:
-  exam_board: "OCR"
-  paper_code: "J277/01"
-  topic: "1.6 Ethical, legal, cultural and environmental impacts"
-  max_marks: 8
-
 question:
-  id: "Q5"
-  prompt: >
-    A school is deciding whether to use Proprietary software or Open Source software for its computer science lessons. 
-    
-    Discuss the legal and ethical impacts of the school choosing Open Source software instead of Proprietary software.
+  id: Q5-NETWORKS
+  prompt: |
+    Describe the differences between a client-server network and a peer-to-peer network.
   requirements:
-    - "Legal issues"
-    - "Ethical issues"
-
+    - Describe Client-Server
+    - Describe Peer-to-Peer
+metadata:
+  topic: Computer Networks
+  exam_board: OCR
+  paper_code: J277/01
+  max_marks: 4
 answer:
   segments:
-    - text: "Choosing open source software over proprietary software has major impacts for a school. "
-    - highlight_id: "mark_legal_1"
-      text: "Legally, proprietary software is heavily restricted by the Copyright Designs and Patents Act, meaning it would be illegal for the school to share copies with students. "
-    - highlight_id: "mark_legal_2"
-      text: "Conversely, open source software legally permits users to view, modify, and distribute the source code without breaking copyright laws. "
-    - highlight_id: "mark_ethical_1"
-      text: "Ethically, choosing open source promotes equality; all students can legally download the software for free at home, regardless of their family's financial situation. "
-    - highlight_id: "mark_ethical_2"
-      text: "Furthermore, because the source code is public, it is ethically more transparent, as experts can check the code to ensure it isn't secretly collecting student data. "
-    - highlight_id: "mark_conclusion"
-      text: "Overall, open source is the most ethical and legally flexible choice for an educational environment."
-
+    - text: "In a client-server network, "
+    - text: "there is a central server that manages the network, and client computers connect to it to request resources or files."
+      highlight_id: "cs-1"
+    - text: " "
+    - text: "Security and backups are managed centrally by the server."
+      highlight_id: "cs-2"
+    - text: "\n\nIn a peer-to-peer network, "
+    - text: "all computers have equal status and there is no central server."
+      highlight_id: "p2p-1"
+    - text: " "
+    - text: "Each computer is responsible for its own security and its own backups."
+      highlight_id: "p2p-2"
 walkthrough:
-  total_marks_awarded: 8
-  band_achieved: "Band 3 (High Level)"
+  total_marks_awarded: 4
+  band_achieved: "Full Marks"
   steps:
     - step_number: 1
-      highlight_id: "mark_legal_1"
-      marks_gained: 2
-      explanation: "Identifies the Copyright Act and explains the legal restrictions of proprietary software."
+      highlight_id: "cs-1"
+      explanation: "Accurately describes the central role of the server providing resources."
+      marks_gained: 1
     - step_number: 2
-      highlight_id: "mark_legal_2"
-      marks_gained: 2
-      explanation: "Explains the legal freedoms associated with open source software (modify, distribute)."
+      highlight_id: "cs-2"
+      explanation: "Identifies a key characteristic of client-server (centralised management/backups)."
+      marks_gained: 1
     - step_number: 3
-      highlight_id: "mark_ethical_1"
-      marks_gained: 2
-      explanation: "Provides a strong ethical argument regarding equality and free access for students at home."
+      highlight_id: "p2p-1"
+      explanation: "Accurately contrasts P2P by stating all nodes are equal with no central authority."
+      marks_gained: 1
     - step_number: 4
-      highlight_id: "mark_ethical_2"
+      highlight_id: "p2p-2"
+      explanation: "Contrasts the management aspect by stating users must manage their own backups/security."
       marks_gained: 1
-      explanation: "Adds an ethical point regarding transparency and data privacy."
+
+---
+question:
+  id: Q6-SECURITY
+  prompt: |
+    Explain what is meant by a 'Brute Force Attack' and describe one method a company could use to protect its network against it.
+  requirements:
+    - Explain brute force attack
+    - Describe a prevention method
+metadata:
+  topic: Network Security
+  exam_board: AQA
+  paper_code: Paper 1
+  max_marks: 4
+answer:
+  segments:
+    - text: "A brute force attack is when "
+    - text: "a hacker uses a program to automatically try every possible combination of passwords"
+      highlight_id: "brute-1"
+    - text: " until they find the correct one to gain access to an account.\n\n"
+    - text: "To protect against it, a company could "
+    - text: "implement an account lockout policy."
+      highlight_id: "prev-1"
+    - text: " "
+    - text: "This locks the account after 3 failed login attempts, stopping the automated program from continuing to guess."
+      highlight_id: "prev-2"
+walkthrough:
+  total_marks_awarded: 3
+  band_achieved: "Mid Level"
+  steps:
+    - step_number: 1
+      highlight_id: "brute-1"
+      explanation: "Defines brute force accurately (automated trial and error of passwords)."
+      marks_gained: 1
+    - step_number: 2
+      highlight_id: "prev-1"
+      explanation: "Identifies a valid prevention method (account lockout)."
+      marks_gained: 1
+    - step_number: 3
+      highlight_id: "prev-2"
+      explanation: "Explains *how* the method stops the attack. Missing a 4th mark for not mentioning strong passwords (increasing time taken to crack) or CAPTCHA."
+      marks_gained: 1
+
+---
+question:
+  id: Q7-OS
+  prompt: |
+    Describe the role of the operating system in managing memory and managing peripherals.
+  requirements:
+    - Describe memory management
+    - Describe peripheral management
+metadata:
+  topic: Systems Software
+  exam_board: OCR
+  paper_code: J277/01
+  max_marks: 4
+answer:
+  segments:
+    - text: "For memory management, the OS "
+    - text: "allocates space in the RAM for programs that are currently open."
+      highlight_id: "mem-1"
+    - text: " "
+    - text: "It also uses virtual memory when the RAM is full by moving inactive data to the hard drive."
+      highlight_id: "mem-2"
+    - text: "\n\nFor peripheral management, the OS "
+    - text: "uses device drivers to communicate with external hardware like printers."
+      highlight_id: "per-1"
+    - text: " "
+    - text: "It sends data to buffers so the CPU doesn't have to wait for a slow printer to finish."
+      highlight_id: "per-2"
+walkthrough:
+  total_marks_awarded: 4
+  band_achieved: "Full Marks"
+  steps:
+    - step_number: 1
+      highlight_id: "mem-1"
+      explanation: "Correctly states that the OS allocates RAM to active processes."
+      marks_gained: 1
+    - step_number: 2
+      highlight_id: "mem-2"
+      explanation: "Expands on memory management by mentioning the handling of virtual memory."
+      marks_gained: 1
+    - step_number: 3
+      highlight_id: "per-1"
+      explanation: "Correctly identifies the use of device drivers for peripheral communication."
+      marks_gained: 1
+    - step_number: 4
+      highlight_id: "per-2"
+      explanation: "Provides a deeper technical point regarding peripheral management (use of buffers/spooling)."
+      marks_gained: 1
+
+---
+question:
+  id: Q8-PROGRAMMING
+  prompt: |
+    Explain what is meant by the term 'casting' in programming, giving an example of when it would be used.
+  requirements:
+    - Definition of casting
+    - A valid example
+metadata:
+  topic: Programming Fundamentals
+  exam_board: OCR
+  paper_code: J277/02
+  max_marks: 3
+answer:
+  segments:
+    - text: "Casting is when you "
+    - text: "change a variable from one data type into another data type."
+      highlight_id: "cast-1"
+    - text: "\n\nAn example is "
+    - text: "when you ask a user for their age using an input."
+      highlight_id: "ex-1"
+    - text: " Inputs are always strings, so you use casting to change it into an integer so you can do math with it."
+walkthrough:
+  total_marks_awarded: 2
+  band_achieved: "Mid Level"
+  steps:
+    - step_number: 1
+      highlight_id: "cast-1"
+      explanation: "Clear and accurate definition of casting."
+      marks_gained: 1
+    - step_number: 2
+      highlight_id: "ex-1"
+      explanation: "Provides a valid scenario (user input string to integer). The student missed out on a 3rd mark because they did not provide a specific code example (e.g. `int(\"5\")`)."
+      marks_gained: 1
+
+---
+question:
+  id: Q9-ALGORITHMS
+  prompt: |
+    Describe the steps involved in performing a binary search on an array of integers. What is a key requirement of the array before a binary search can be performed?
+  requirements:
+    - State the array requirement
+    - Describe the steps of the algorithm
+metadata:
+  topic: Algorithms
+  exam_board: Edexcel
+  paper_code: Paper 2
+  max_marks: 5
+answer:
+  segments:
+    - text: "Before a binary search can be performed, "
+    - text: "the array must be sorted into alphabetical or numerical order."
+      highlight_id: "req"
+    - text: "\n\nFirst, "
+    - text: "you find the middle item of the array and compare it to the target item you are looking for."
+      highlight_id: "step-1"
+    - text: " "
+    - text: "If the middle item is the target, you stop."
+      highlight_id: "step-2"
+    - text: " "
+    - text: "If the target is smaller than the middle item, you discard the right half of the array."
+      highlight_id: "step-3"
+    - text: " Then you just keep repeating this process on the remaining half until the item is found."
+walkthrough:
+  total_marks_awarded: 4
+  band_achieved: "Mid-High Level"
+  steps:
+    - step_number: 1
+      highlight_id: "req"
+      explanation: "Correctly identifies the prerequisite condition: the list must be ordered/sorted."
+      marks_gained: 1
+    - step_number: 2
+      highlight_id: "step-1"
+      explanation: "Identifies the first step of finding the midpoint and comparing it."
+      marks_gained: 1
+    - step_number: 3
+      highlight_id: "step-2"
+      explanation: "Identifies the base case / stopping condition."
+      marks_gained: 1
+    - step_number: 4
+      highlight_id: "step-3"
+      explanation: "Correctly describes discarding half the list based on a size comparison. Missed the 5th mark by not explicitly stating that you must recalculate a new midpoint for the remaining half."
+      marks_gained: 1
+
+---
+question:
+  id: Q10-LANGUAGES
+  prompt: |
+    Explain the difference between a high-level and a low-level programming language. Give one advantage of using each.
+  requirements:
+    - Difference between high and low level
+    - Advantage of high level
+    - Advantage of low level
+metadata:
+  topic: Translators and Languages
+  exam_board: AQA
+  paper_code: Paper 2
+  max_marks: 6
+answer:
+  segments:
+    - text: "A high-level language is written in English-like words, whereas "
+    - text: "a low-level language is written in machine code (binary) or assembly language, which is closer to the hardware."
+      highlight_id: "diff-1"
+    - text: " "
+    - text: "High-level languages must be translated by a compiler or interpreter before the computer can run them, but machine code does not."
+      highlight_id: "diff-2"
+    - text: "\n\nAn advantage of high-level languages is that "
+    - text: "they are much easier for humans to read, write, and debug,"
+      highlight_id: "adv-hl"
+    - text: " so it is faster to program a game.\n\n"
+    - text: "An advantage of low-level languages is that "
+    - text: "they give the programmer direct control over the CPU and memory,"
+      highlight_id: "adv-ll1"
+    - text: " "
+    - text: "which means the code executes much faster and takes up less memory."
+      highlight_id: "adv-ll2"
+walkthrough:
+  total_marks_awarded: 5
+  band_achieved: "High Level"
+  steps:
+    - step_number: 1
+      highlight_id: "diff-1"
+      explanation: "Accurately distinguishes between the two based on their proximity to hardware / human language."
+      marks_gained: 1
+    - step_number: 2
+      highlight_id: "diff-2"
+      explanation: "Provides a second distinction regarding the need for translation."
+      marks_gained: 1
+    - step_number: 3
+      highlight_id: "adv-hl"
+      explanation: "Identifies a clear advantage of high-level languages (programmer efficiency/readability)."
+      marks_gained: 1
+    - step_number: 4
+      highlight_id: "adv-ll1"
+      explanation: "Identifies an advantage of low-level languages (hardware control)."
+      marks_gained: 1
     - step_number: 5
-      highlight_id: "mark_conclusion"
+      highlight_id: "adv-ll2"
+      explanation: "Expands on the low-level advantage with a performance benefit (execution speed / memory footprint). Student missed the 6th mark by not mentioning portability (high-level is portable across OS, low-level is machine specific)."
       marks_gained: 1
-      explanation: "A clear, justified conclusion referencing both legal and ethical domains."

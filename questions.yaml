@@ -301,14 +301,14 @@ metadata:
 answer:
   segments:
     - text: "A brute force attack is when "
-    - text: "a hacker uses a program to automatically try every possible combination of passwords"
+    - text: "a hacker uses a programme to automatically try every possible combination of passwords"
       highlight_id: "brute-1"
     - text: " until they find the correct one to gain access to an account.\n\n"
     - text: "To protect against it, a company could "
     - text: "implement an account lockout policy."
       highlight_id: "prev-1"
     - text: " "
-    - text: "This locks the account after 3 failed login attempts, stopping the automated program from continuing to guess."
+    - text: "This locks the account after 3 failed login attempts, stopping the automated programme from continuing to guess."
       highlight_id: "prev-2"
 walkthrough:
   total_marks_awarded: 3
@@ -343,7 +343,7 @@ metadata:
 answer:
   segments:
     - text: "For memory management, the OS "
-    - text: "allocates space in the RAM for programs that are currently open."
+    - text: "allocates space in the RAM for programmes that are currently open."
       highlight_id: "mem-1"
     - text: " "
     - text: "It also uses virtual memory when the RAM is full by moving inactive data to the hard drive."
@@ -396,7 +396,7 @@ answer:
     - text: "\n\nAn example is "
     - text: "when you ask a user for their age using an input."
       highlight_id: "ex-1"
-    - text: " Inputs are always strings, so you use casting to change it into an integer so you can do math with it."
+    - text: " Inputs are always strings, so you use casting to change it into an integer so you can do maths with it."
 walkthrough:
   total_marks_awarded: 2
   band_achieved: "Mid Level"
@@ -484,7 +484,7 @@ answer:
     - text: "\n\nAn advantage of high-level languages is that "
     - text: "they are much easier for humans to read, write, and debug,"
       highlight_id: "adv-hl"
-    - text: " so it is faster to program a game.\n\n"
+    - text: " so it is faster to programme a game.\n\n"
     - text: "An advantage of low-level languages is that "
     - text: "they give the programmer direct control over the CPU and memory,"
       highlight_id: "adv-ll1"

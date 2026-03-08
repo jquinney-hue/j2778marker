@@ -1,1 +1,288 @@
+---
+metadata:
+  exam_board: "OCR"
+  paper_code: "J277/01"
+  topic: "1.6 Ethical, legal, cultural and environmental impacts"
+  max_marks: 8
 
+question:
+  id: "Q1"
+  prompt: >
+    A family decides to install voice-activated smart speakers in every room of their house. 
+    The devices are connected to the internet, control the home's heating and lighting, 
+    and continuously listen for a "wake word" to process commands via the manufacturer's cloud servers.
+    
+    Discuss the impact of the family installing these voice-activated smart devices in their home.
+  requirements:
+    - "ethical issues"
+    - "privacy issues"
+    - "legal issues"
+
+answer:
+  segments:
+    - text: "The installation of smart speakers in the home introduces several new impacts. "
+    - highlight_id: "mark_legal_1"
+      text: "Legally, the manufacturer of the smart speaker must comply with the Data Protection Act (DPA). "
+    - text: "Because the devices process user data in the cloud, "
+    - highlight_id: "mark_legal_2"
+      text: "the data must be kept securely to prevent breaches, and the family must agree to terms and conditions regarding data usage. "
+    - highlight_id: "mark_ethical_1"
+      text: "Ethically, a positive impact is that the devices provide significant accessibility benefits, allowing users with mobility issues to control heating easily. "
+    - text: "However, "
+    - highlight_id: "mark_privacy_1"
+      text: "a negative privacy issue is that the devices are 'always listening' for a wake word, making users and unaware guests feel like they are under constant surveillance in their own home. "
+    - highlight_id: "mark_conclusion"
+      text: "Overall, the family must weigh the immense convenience and accessibility benefits against the severe privacy risks of continuous audio monitoring."
+
+walkthrough:
+  total_marks_awarded: 8
+  band_achieved: "Band 3 (High Level)"
+  steps:
+    - step_number: 1
+      highlight_id: "mark_legal_1"
+      marks_gained: 1
+      explanation: "Identifies a relevant piece of legislation (Data Protection Act) applicable to the context."
+    - step_number: 2
+      highlight_id: "mark_legal_2"
+      marks_gained: 2
+      explanation: "Expands on the legal point by explaining the requirements of the DPA (keeping data secure, terms and conditions)."
+    - step_number: 3
+      highlight_id: "mark_ethical_1"
+      marks_gained: 2
+      explanation: "Provides a balanced view by introducing a positive ethical impact (accessibility/mobility benefits)."
+    - step_number: 4
+      highlight_id: "mark_privacy_1"
+      marks_gained: 2
+      explanation: "Identifies a negative privacy issue ('always listening' / surveillance of guests). Covers the final required bullet point."
+    - step_number: 5
+      highlight_id: "mark_conclusion"
+      marks_gained: 1
+      explanation: "Provides a well-developed conclusion weighing both sides of the argument, achieving maximum marks."
+
+---
+metadata:
+  exam_board: "OCR"
+  paper_code: "J277/01"
+  topic: "1.6 Ethical, legal, cultural and environmental impacts"
+  max_marks: 8
+
+question:
+  id: "Q2"
+  prompt: >
+    Social networking websites use artificial intelligence (AI) to automatically monitor posts and images uploaded by users. 
+    
+    Discuss the positive and negative uses of AI by social networking websites.
+  requirements:
+    - "Legal issues"
+    - "Ethical issues"
+    - "Privacy issues"
+
+answer:
+  segments:
+    - text: "The use of AI to monitor posts has significant implications. "
+    - highlight_id: "mark_legal_1"
+      text: "Legally, AI helps the platform enforce the Copyright Designs and Patents Act by instantly flagging and removing plagiarized or copyrighted videos. "
+    - highlight_id: "mark_legal_2"
+      text: "However, the platform must ensure the AI complies with the Data Protection Act by not using the scanned personal data for unauthorized purposes. "
+    - highlight_id: "mark_ethical_1"
+      text: "Ethically, AI works 24/7 to rapidly identify and remove harmful content like cyberbullying, creating a safer environment. "
+    - text: "Conversely, "
+    - highlight_id: "mark_ethical_2"
+      text: "AI lacks human context and may incorrectly block legitimate posts, which can be seen as unfair censorship. "
+    - highlight_id: "mark_privacy_1"
+      text: "From a privacy perspective, continuous AI monitoring creates a feeling of constant surveillance, even though users technically agree to this in the Terms and Conditions."
+
+walkthrough:
+  total_marks_awarded: 8
+  band_achieved: "Band 3 (High Level)"
+  steps:
+    - step_number: 1
+      highlight_id: "mark_legal_1"
+      marks_gained: 2
+      explanation: "Identifies the Copyright Act and provides a positive application of AI (removing stolen content)."
+    - step_number: 2
+      highlight_id: "mark_legal_2"
+      marks_gained: 1
+      explanation: "Identifies the DPA and relates it to the negative risk of unauthorized data use."
+    - step_number: 3
+      highlight_id: "mark_ethical_1"
+      marks_gained: 2
+      explanation: "Explains a positive ethical impact (removing harmful content / cyberbullying rapidly)."
+    - step_number: 4
+      highlight_id: "mark_ethical_2"
+      marks_gained: 1
+      explanation: "Explains a negative ethical impact (false positives / unfair censorship)."
+    - step_number: 5
+      highlight_id: "mark_privacy_1"
+      marks_gained: 2
+      explanation: "Addresses the privacy requirement, noting the feeling of surveillance and referencing Terms and Conditions."
+
+---
+metadata:
+  exam_board: "OCR"
+  paper_code: "J277/01"
+  topic: "1.6 Ethical, legal, cultural and environmental impacts"
+  max_marks: 8
+
+question:
+  id: "Q3"
+  prompt: >
+    A health insurance company offers cheaper premiums to customers who wear a smartwatch. The smartwatch monitors their daily exercise, heart rate, and GPS location, sending this data back to the company.
+    
+    Discuss the issues surrounding this use of wearable technology.
+  requirements:
+    - "Ethical issues"
+    - "Legal issues"
+    - "Privacy issues"
+
+answer:
+  segments:
+    - text: "Using smartwatches for health insurance premiums creates several debates. "
+    - highlight_id: "mark_ethical_1"
+      text: "Ethically, a positive impact is that it financially incentivizes customers to lead a healthier lifestyle and exercise more. "
+    - text: "However, "
+    - highlight_id: "mark_ethical_2"
+      text: "it is highly unethical because it discriminates against disabled or elderly individuals who cannot easily exercise, forcing them to pay higher premiums. "
+    - highlight_id: "mark_legal_1"
+      text: "Legally, the insurance company must strictly adhere to the Data Protection Act. "
+    - highlight_id: "mark_legal_2"
+      text: "Because health data is highly sensitive, it must be kept extremely secure to prevent hackers from stealing it. "
+    - highlight_id: "mark_privacy_1"
+      text: "Privacy is a major concern, as the GPS tracker means the company knows the user's exact location at all times, leading to a loss of personal anonymity."
+
+walkthrough:
+  total_marks_awarded: 8
+  band_achieved: "Band 3 (High Level)"
+  steps:
+    - step_number: 1
+      highlight_id: "mark_ethical_1"
+      marks_gained: 1
+      explanation: "Identifies a clear positive ethical outcome (encouraging healthy lifestyles)."
+    - step_number: 2
+      highlight_id: "mark_ethical_2"
+      marks_gained: 2
+      explanation: "Provides a strong counter-argument regarding discrimination, showing excellent contextual understanding."
+    - step_number: 3
+      highlight_id: "mark_legal_1"
+      marks_gained: 1
+      explanation: "Correctly identifies the DPA in relation to storing user data."
+    - step_number: 4
+      highlight_id: "mark_legal_2"
+      marks_gained: 2
+      explanation: "Expands on the legal point by highlighting the sensitivity of health data and the need for security against hacking."
+    - step_number: 5
+      highlight_id: "mark_privacy_1"
+      marks_gained: 2
+      explanation: "Addresses the privacy concern regarding continuous GPS location tracking."
+
+---
+metadata:
+  exam_board: "OCR"
+  paper_code: "J277/01"
+  topic: "1.6 Ethical, legal, cultural and environmental impacts"
+  max_marks: 8
+
+question:
+  id: "Q4"
+  prompt: >
+    Consumers are increasingly upgrading their smartphones every 1 to 2 years, discarding their old devices.
+    
+    Discuss the impacts of this rapid upgrade cycle.
+  requirements:
+    - "Environmental impacts"
+    - "Cultural impacts"
+
+answer:
+  segments:
+    - text: "The trend of rapidly upgrading smartphones has severe consequences. "
+    - highlight_id: "mark_env_1"
+      text: "Environmentally, discarded phones contribute to massive amounts of e-waste in landfills, where toxic chemicals like lead and battery acid can leak into the soil and water. "
+    - highlight_id: "mark_env_2"
+      text: "Furthermore, manufacturing millions of new phones yearly heavily depletes finite natural resources, as rare earth metals must be continuously mined. "
+    - highlight_id: "mark_cult_1"
+      text: "Culturally, this trend widens the digital divide, creating inequality between those who can afford the latest technology and those who cannot. "
+    - highlight_id: "mark_cult_2"
+      text: "It also creates intense social pressure and consumerism, especially among teenagers, who may feel bullied or left out if they do not have the newest smartphone model. "
+    - highlight_id: "mark_conclusion"
+      text: "In conclusion, while consumers enjoy new features, the devastating cost to the environment and the negative social pressures far outweigh the benefits."
+
+walkthrough:
+  total_marks_awarded: 8
+  band_achieved: "Band 3 (High Level)"
+  steps:
+    - step_number: 1
+      highlight_id: "mark_env_1"
+      marks_gained: 2
+      explanation: "Clearly explains the environmental issue of e-waste and the specific danger of toxic chemical leakage."
+    - step_number: 2
+      highlight_id: "mark_env_2"
+      marks_gained: 2
+      explanation: "Provides a second environmental point regarding the depletion of natural resources and mining."
+    - step_number: 3
+      highlight_id: "mark_cult_1"
+      marks_gained: 1
+      explanation: "Identifies the cultural impact of the digital divide and inequality."
+    - step_number: 4
+      highlight_id: "mark_cult_2"
+      marks_gained: 2
+      explanation: "Expands on cultural impacts by discussing social pressure, consumerism, and bullying."
+    - step_number: 5
+      highlight_id: "mark_conclusion"
+      marks_gained: 1
+      explanation: "Offers a strong, justified conclusion that weighs the impacts, securing the top band."
+
+---
+metadata:
+  exam_board: "OCR"
+  paper_code: "J277/01"
+  topic: "1.6 Ethical, legal, cultural and environmental impacts"
+  max_marks: 8
+
+question:
+  id: "Q5"
+  prompt: >
+    A school is deciding whether to use Proprietary software or Open Source software for its computer science lessons. 
+    
+    Discuss the legal and ethical impacts of the school choosing Open Source software instead of Proprietary software.
+  requirements:
+    - "Legal issues"
+    - "Ethical issues"
+
+answer:
+  segments:
+    - text: "Choosing open source software over proprietary software has major impacts for a school. "
+    - highlight_id: "mark_legal_1"
+      text: "Legally, proprietary software is heavily restricted by the Copyright Designs and Patents Act, meaning it would be illegal for the school to share copies with students. "
+    - highlight_id: "mark_legal_2"
+      text: "Conversely, open source software legally permits users to view, modify, and distribute the source code without breaking copyright laws. "
+    - highlight_id: "mark_ethical_1"
+      text: "Ethically, choosing open source promotes equality; all students can legally download the software for free at home, regardless of their family's financial situation. "
+    - highlight_id: "mark_ethical_2"
+      text: "Furthermore, because the source code is public, it is ethically more transparent, as experts can check the code to ensure it isn't secretly collecting student data. "
+    - highlight_id: "mark_conclusion"
+      text: "Overall, open source is the most ethical and legally flexible choice for an educational environment."
+
+walkthrough:
+  total_marks_awarded: 8
+  band_achieved: "Band 3 (High Level)"
+  steps:
+    - step_number: 1
+      highlight_id: "mark_legal_1"
+      marks_gained: 2
+      explanation: "Identifies the Copyright Act and explains the legal restrictions of proprietary software."
+    - step_number: 2
+      highlight_id: "mark_legal_2"
+      marks_gained: 2
+      explanation: "Explains the legal freedoms associated with open source software (modify, distribute)."
+    - step_number: 3
+      highlight_id: "mark_ethical_1"
+      marks_gained: 2
+      explanation: "Provides a strong ethical argument regarding equality and free access for students at home."
+    - step_number: 4
+      highlight_id: "mark_ethical_2"
+      marks_gained: 1
+      explanation: "Adds an ethical point regarding transparency and data privacy."
+    - step_number: 5
+      highlight_id: "mark_conclusion"
+      marks_gained: 1
+      explanation: "A clear, justified conclusion referencing both legal and ethical domains."

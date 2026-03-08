@@ -515,3 +515,153 @@ walkthrough:
       highlight_id: "adv-ll2"
       explanation: "Expands on the low-level advantage with a performance benefit (execution speed / memory footprint). Student missed the 6th mark by not mentioning portability (high-level is portable across OS, low-level is machine specific)."
       marks_gained: 1
+
+---
+question:
+  id: Q11-DATAPROTECTION
+  prompt: |
+    A fitness company has released a new smartwatch app that tracks users' locations and health metrics.
+    
+    Discuss the legal and privacy issues the company must consider regarding the users' data.
+  requirements:
+    - Discuss legal requirements (e.g., Data Protection Act)
+    - Discuss privacy concerns
+metadata:
+  topic: Ethical, Legal & Environmental
+  exam_board: AQA
+  paper_code: Paper 1
+  max_marks: 6
+answer:
+  segments:
+    - text: "Legally, the company must comply with the Data Protection Act. They must ensure that "
+    - text: "data is stored securely to prevent a data breach"
+      highlight_id: "legal-1"
+    - text: " and that they "
+    - text: "only collect data that is strictly necessary for the app to function."
+      highlight_id: "legal-2"
+    - text: "\n\nIn terms of privacy, users might be concerned that "
+    - text: "their exact physical location is being constantly tracked,"
+      highlight_id: "priv-1"
+    - text: " which could be dangerous if it falls into the wrong hands. Furthermore, there are privacy issues if the company decides to "
+    - text: "sell this sensitive health data to third-party advertising companies without explicit consent."
+      highlight_id: "priv-2"
+walkthrough:
+  total_marks_awarded: 4
+  band_achieved: "Mid Level"
+  steps:
+    - step_number: 1
+      highlight_id: "legal-1"
+      explanation: "Correctly identifies a key principle of data protection legislation: keeping data secure."
+      marks_gained: 1
+    - step_number: 2
+      highlight_id: "legal-2"
+      explanation: "Identifies another legal principle: data minimisation (only collecting what is needed)."
+      marks_gained: 1
+    - step_number: 3
+      highlight_id: "priv-1"
+      explanation: "Raises a valid privacy concern regarding continuous location tracking."
+      marks_gained: 1
+    - step_number: 4
+      highlight_id: "priv-2"
+      explanation: "Raises the privacy issue of selling data/sharing with third parties without consent. Missing marks for not mentioning the right to be forgotten or data accuracy."
+      marks_gained: 1
+
+---
+question:
+  id: Q12-LEGALACTS
+  prompt: |
+    A student bypasses their school's network security to download a copy of a popular video game without paying for it, and then distributes copies to their friends.
+    
+    State two UK laws the student has broken and explain how their actions violate each law.
+  requirements:
+    - Identify Law 1 and explain the violation
+    - Identify Law 2 and explain the violation
+metadata:
+  topic: Ethical, Legal & Environmental
+  exam_board: OCR
+  paper_code: J277/01
+  max_marks: 4
+answer:
+  segments:
+    - text: "The first law broken is the "
+    - text: "Computer Misuse Act."
+      highlight_id: "law-1"
+    - text: " They violated this by "
+    - text: "gaining unauthorised access to the school's network by bypassing the security."
+      highlight_id: "exp-1"
+    - text: "\n\nThe second law broken is the "
+    - text: "Copyright, Designs and Patents Act."
+      highlight_id: "law-2"
+    - text: " They violated this by "
+    - text: "copying and distributing the video game without purchasing a licence from the creator."
+      highlight_id: "exp-2"
+walkthrough:
+  total_marks_awarded: 4
+  band_achieved: "Full Marks"
+  steps:
+    - step_number: 1
+      highlight_id: "law-1"
+      explanation: "Correctly identifies the Computer Misuse Act."
+      marks_gained: 1
+    - step_number: 2
+      highlight_id: "exp-1"
+      explanation: "Accurately maps the action (unauthorised access/bypassing security) to the Computer Misuse Act."
+      marks_gained: 1
+    - step_number: 3
+      highlight_id: "law-2"
+      explanation: "Correctly identifies the Copyright, Designs and Patents Act."
+      marks_gained: 1
+    - step_number: 4
+      highlight_id: "exp-2"
+      explanation: "Accurately maps the action (piracy/distributing without a licence) to the Copyright Act."
+      marks_gained: 1
+
+---
+question:
+  id: Q13-SMARTDEVICES
+  prompt: |
+    Many households now contain 'smart speakers' that respond to voice commands.
+    
+    Discuss the ethical and privacy concerns of having these devices in the home.
+  requirements:
+    - Discuss ethical concerns
+    - Discuss privacy concerns
+metadata:
+  topic: Ethical, Legal & Environmental
+  exam_board: Edexcel
+  paper_code: Paper 1
+  max_marks: 6
+answer:
+  segments:
+    - text: "A major privacy concern is that smart speakers are "
+    - text: "constantly listening to their surroundings in order to hear their wake word."
+      highlight_id: "priv-1"
+    - text: " People are worried that "
+    - text: "private conversations might be recorded and sent to the manufacturer's servers without their knowledge."
+      highlight_id: "priv-2"
+    - text: "\n\nEthically, there is an issue regarding consent. "
+    - text: "Guests or children in the house might not understand that they are being recorded, meaning they haven't given informed consent."
+      highlight_id: "eth-1"
+    - text: " Furthermore, there is an ethical concern that "
+    - text: "companies use this voice data to build detailed profiles of families in order to target them with specific advertisements."
+      highlight_id: "eth-2"
+walkthrough:
+  total_marks_awarded: 4
+  band_achieved: "Mid-High Level"
+  steps:
+    - step_number: 1
+      highlight_id: "priv-1"
+      explanation: "Identifies the always-on/listening nature of the devices as a privacy risk."
+      marks_gained: 1
+    - step_number: 2
+      highlight_id: "priv-2"
+      explanation: "Expands on the privacy risk by mentioning the potential transmission and storage of private conversations."
+      marks_gained: 1
+    - step_number: 3
+      highlight_id: "eth-1"
+      explanation: "Identifies a strong ethical issue regarding the lack of informed consent from visitors/minors."
+      marks_gained: 1
+    - step_number: 4
+      highlight_id: "eth-2"
+      explanation: "Links the collection of data to the ethical issue of profiling and targeted advertising. Student achieves 4 out of 6 marks, missing points on potential hacking or data breaches."
+      marks_gained: 1

@@ -119,8 +119,10 @@
         // 3. Processing and Rendering
         function processYamlContent(yamlText) {
             try {
-                // Use loadAll to support multiple YAML documents separated by --- in a single file
-                jsyaml.loadAll(yamlText, (parsedData) => {
+                // In js-yaml v4, loadAll returns an array of documents directly
+                const documents = jsyaml.loadAll(yamlText);
+                
+                documents.forEach((parsedData) => {
                     if (parsedData) {
                         validateSchema(parsedData);
                         renderQuestion(parsedData);

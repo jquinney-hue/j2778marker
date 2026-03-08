@@ -17,39 +17,64 @@
         .highlight-segment { transition: all 0.3s ease; }
         .drag-over { border-color: #3b82f6 !important; background-color: #eff6ff !important; }
         
-        /* Smooth scrolling for anchor links if needed */
+        /* Custom Scrollbar for Sidebar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
         html { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+<body class="bg-gray-50 text-gray-800 h-screen flex flex-col overflow-hidden">
 
     <!-- Header & Drag/Drop Zone -->
-    <header id="drop-zone" class="bg-white border-b-4 border-blue-600 shadow-sm p-8 text-center transition-colors duration-200 border-dashed border-2 m-4 rounded-xl border-gray-300 bg-gray-50 cursor-pointer">
-        <h1 class="text-3xl font-bold text-gray-900 mb-2">Interactive Exam Walkthroughs</h1>
-        <p class="text-gray-500 mb-4">Use the Next/Previous buttons to step through how the marks were gained.</p>
-        <div class="inline-flex items-center justify-center px-4 py-2 bg-blue-50 text-blue-700 rounded-lg font-medium text-sm">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-            Drag & Drop YAML files here to add them
+    <header id="drop-zone" class="bg-white border-b border-gray-200 shadow-sm p-4 text-center transition-colors duration-200 z-10 relative">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="text-left mb-2 md:mb-0">
+                <h1 class="text-2xl font-bold text-gray-900">Interactive Exam Walkthroughs</h1>
+                <p class="text-gray-500 text-sm">Step through how marks are awarded in student answers.</p>
+            </div>
+            
+            <div class="inline-flex items-center justify-center px-4 py-2 bg-blue-50 text-blue-700 rounded-lg border border-blue-200 border-dashed cursor-pointer hover:bg-blue-100 transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                <span class="text-sm font-medium">Drag & Drop YAML files here</span>
+            </div>
         </div>
     </header>
 
-    <!-- Container for the loaded questions -->
-    <main id="questions-container" class="flex-grow max-w-7xl mx-auto w-full p-4 space-y-8 pb-20">
-        <!-- Questions will be injected here via JavaScript -->
-    </main>
+    <!-- Main App Layout -->
+    <div class="flex-grow flex w-full max-w-[100rem] mx-auto overflow-hidden">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-72 bg-white border-r border-gray-200 flex flex-col shadow-sm z-0 flex-shrink-0 hidden md:flex">
+            <div class="p-4 border-b border-gray-100 bg-gray-50 flex-shrink-0">
+                <h2 class="font-bold text-gray-700 uppercase tracking-wider text-xs">Questions Loaded</h2>
+            </div>
+            <nav id="sidebar-nav" class="flex-grow overflow-y-auto p-3 space-y-2">
+                <!-- Nav items injected here -->
+                <div class="text-gray-400 text-sm p-2 italic text-center mt-10">Loading questions...</div>
+            </nav>
+        </aside>
+
+        <!-- Container for the active question -->
+        <main id="active-question-container" class="flex-grow overflow-y-auto p-4 md:p-8 bg-gray-50 relative">
+            <!-- Active Question will be injected here via JavaScript -->
+        </main>
+        
+    </div>
 
     <script>
         // ==========================================
         // CONFIGURATION
-        // Add your GitHub RAW URLs or other endpoints here.
         // ==========================================
-        
-        // ---- YOUR URLS GO HERE ----
         const YAML_URLS = [
             "https://raw.githubusercontent.com/jquinney-hue/j2778marker/refs/heads/main/questions.yaml"
         ];
 
-        // Global state object to keep track of active steps for each question
+        // Global State
+        const loadedQuestions = [];
+        let activeQuestionIndex = -1;
         const walkthroughState = {};
 
         // ==========================================
@@ -116,18 +141,43 @@
             });
         }
 
-        // 3. Processing and Rendering
+        // 3. Processing
         function processYamlContent(yamlText) {
             try {
-                // In js-yaml v4, loadAll returns an array of documents directly
                 const documents = jsyaml.loadAll(yamlText);
-                
+                let addedAny = false;
+
                 documents.forEach((parsedData) => {
                     if (parsedData) {
                         validateSchema(parsedData);
-                        renderQuestion(parsedData);
+                        
+                        // Prevent duplicates based on Question ID
+                        const isDuplicate = loadedQuestions.some(q => q.question.id === parsedData.question.id);
+                        if (!isDuplicate) {
+                            loadedQuestions.push(parsedData);
+                            
+                            // Initialize state for this specific question
+                            walkthroughState[parsedData.question.id] = {
+                                steps: parsedData.walkthrough.steps,
+                                currentIndex: 0,
+                                activeTab: 'walkthrough', // 'walkthrough' or 'try-it'
+                                userAnswer: '',
+                                selfMarkMode: false,
+                                userMarks: new Array(parsedData.walkthrough.steps.length).fill(false)
+                            };
+                            addedAny = true;
+                        }
                     }
                 });
+
+                if (addedAny) {
+                    if (activeQuestionIndex === -1) {
+                        activeQuestionIndex = 0;
+                    }
+                    renderApp();
+                    showToast("Questions loaded successfully!", "success");
+                }
+
             } catch (error) {
                 console.error("YAML Parse Error:", error);
                 showToast("Invalid YAML format or schema.", "error");
@@ -140,77 +190,165 @@
             }
         }
 
-        function renderQuestion(data) {
-            const container = document.getElementById('questions-container');
-            const qId = data.question.id;
-            
-            // Initialize state for this specific question
-            walkthroughState[qId] = {
-                steps: data.walkthrough.steps,
-                currentIndex: 0
-            };
+        // 4. Rendering
+        function renderApp() {
+            renderSidebar();
+            renderActiveQuestion();
+        }
 
+        function renderSidebar() {
+            const nav = document.getElementById('sidebar-nav');
+            nav.innerHTML = '';
+
+            if (loadedQuestions.length === 0) {
+                nav.innerHTML = '<div class="text-gray-400 text-sm p-2 italic text-center">No questions loaded.</div>';
+                return;
+            }
+
+            loadedQuestions.forEach((data, index) => {
+                const isActive = index === activeQuestionIndex;
+                const btn = document.createElement('button');
+                
+                btn.className = `w-full text-left px-4 py-3 rounded-xl border text-sm transition-all duration-200 group ${
+                    isActive 
+                    ? 'bg-blue-50 border-blue-200 shadow-sm' 
+                    : 'bg-white border-transparent hover:bg-gray-100 hover:border-gray-200 text-gray-600'
+                }`;
+                
+                btn.innerHTML = `
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold ${isActive ? 'text-blue-700' : 'text-gray-800'}">${data.question.id}</span>
+                        <span class="text-xs font-semibold px-2 py-0.5 rounded-full ${isActive ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-500'}">
+                            ${data.metadata.max_marks} marks
+                        </span>
+                    </div>
+                    <div class="text-xs truncate opacity-80 ${isActive ? 'text-blue-600' : 'text-gray-500'}">
+                        ${data.metadata.topic || 'Exam Question'}
+                    </div>
+                `;
+                
+                btn.onclick = () => {
+                    activeQuestionIndex = index;
+                    renderApp();
+                };
+                
+                nav.appendChild(btn);
+            });
+        }
+
+        function renderActiveQuestion() {
+            const container = document.getElementById('active-question-container');
+            container.innerHTML = '';
+
+            if (loadedQuestions.length === 0 || activeQuestionIndex === -1) {
+                container.innerHTML = `
+                    <div class="h-full flex items-center justify-center">
+                        <div class="text-center text-gray-400 max-w-sm">
+                            <svg class="mx-auto h-16 w-16 mb-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            <p class="text-lg font-medium">No Question Selected</p>
+                            <p class="text-sm mt-1">Please drag and drop a YAML file or select a question from the sidebar.</p>
+                        </div>
+                    </div>`;
+                return;
+            }
+
+            const data = loadedQuestions[activeQuestionIndex];
+            const qId = data.question.id;
+            const state = walkthroughState[qId];
+            
             const card = document.createElement('article');
-            card.className = "bg-white rounded-xl shadow-md overflow-hidden border border-gray-200";
+            card.className = "bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 max-w-5xl mx-auto animation-fade-in";
             
             let html = `
                 <!-- Header -->
-                <div class="bg-gray-800 text-white p-4 flex justify-between items-center">
+                <div class="bg-gray-800 text-white p-5 flex justify-between items-center">
                     <div>
                         <h2 class="text-xl font-bold">${qId}: ${data.metadata.topic || 'Exam Question'}</h2>
-                        <span class="text-sm text-gray-300">${data.metadata.exam_board || ''} ${data.metadata.paper_code || ''}</span>
+                        <span class="text-sm text-gray-300 font-medium tracking-wide mt-1 inline-block">
+                            ${data.metadata.exam_board || ''} ${data.metadata.paper_code || ''}
+                        </span>
                     </div>
-                    <div class="bg-blue-600 px-3 py-1 rounded-full text-sm font-bold shadow-inner">
+                    <div class="bg-blue-600 px-4 py-1.5 rounded-full text-sm font-bold shadow-inner">
                         Max Marks: ${data.metadata.max_marks}
                     </div>
                 </div>
 
-                <div class="p-6">
+                <div class="p-6 md:p-8">
                     <!-- Question Prompt -->
-                    <div class="mb-8 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                        <h3 class="font-bold text-blue-900 mb-2 uppercase text-sm tracking-wider">Question</h3>
-                        <p class="text-gray-800 whitespace-pre-wrap font-medium">${data.question.prompt}</p>
+                    <div class="mb-8 bg-blue-50/50 border-l-4 border-blue-500 p-5 rounded-r-xl">
+                        <h3 class="font-bold text-blue-900 mb-3 uppercase text-xs tracking-wider flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            The Question
+                        </h3>
+                        <p class="text-gray-800 whitespace-pre-wrap font-medium text-lg leading-relaxed">${data.question.prompt}</p>
                         
                         ${data.question.requirements ? `
-                        <ul class="list-disc list-inside mt-3 text-gray-700">
-                            ${data.question.requirements.map(req => `<li>${req}</li>`).join('')}
-                        </ul>
+                        <div class="mt-4 pt-4 border-t border-blue-200/50">
+                            <span class="text-sm font-bold text-blue-900 mb-2 block">Key requirements to cover:</span>
+                            <ul class="flex flex-wrap gap-2 text-gray-700">
+                                ${data.question.requirements.map(req => `<li class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium shadow-sm">${req}</li>`).join('')}
+                            </ul>
+                        </div>
                         ` : ''}
                     </div>
 
+                    <!-- Tabs -->
+                    <div class="flex space-x-2 mb-6 border-b border-gray-200">
+                        <button onclick="switchTab('${qId}', 'walkthrough')" class="px-6 py-3 text-sm font-bold rounded-t-lg transition-colors focus:outline-none ${state.activeTab === 'walkthrough' ? 'bg-white border-t-2 border-l border-r border-blue-600 text-blue-700 mb-[-1px]' : 'bg-gray-50 text-gray-500 hover:text-gray-700 hover:bg-gray-100 border border-transparent mb-[-1px]'}">
+                            Example Walkthrough
+                        </button>
+                        <button onclick="switchTab('${qId}', 'try-it')" class="px-6 py-3 text-sm font-bold rounded-t-lg transition-colors focus:outline-none ${state.activeTab === 'try-it' ? 'bg-white border-t-2 border-l border-r border-blue-600 text-blue-700 mb-[-1px]' : 'bg-gray-50 text-gray-500 hover:text-gray-700 hover:bg-gray-100 border border-transparent mb-[-1px]'}">
+                            Try It Yourself
+                        </button>
+                    </div>
+            `;
+
+            if (state.activeTab === 'walkthrough') {
+                html += `
                     <!-- Split View for Answer and Walkthrough -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         
                         <!-- Answer Column -->
-                        <div class="border border-gray-200 rounded-lg overflow-hidden flex flex-col">
-                            <div class="bg-gray-100 p-3 border-b border-gray-200 font-bold text-gray-700 uppercase text-xs tracking-wider">
+                        <div class="border border-gray-200 rounded-xl overflow-hidden flex flex-col shadow-sm">
+                            <div class="bg-gray-100 p-4 border-b border-gray-200 font-bold text-gray-700 uppercase text-xs tracking-wider flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                                 Student Answer
                             </div>
-                            <div class="p-5 text-gray-800 leading-relaxed text-lg flex-grow">
+                            <div class="p-6 text-gray-800 leading-relaxed text-lg flex-grow">
                                 ${renderAnswerSegments(qId, data.answer.segments)}
                             </div>
                         </div>
 
                         <!-- Walkthrough Stepper Column -->
-                        <div class="border border-gray-200 rounded-lg overflow-hidden flex flex-col">
-                            <div class="bg-gray-100 p-3 border-b border-gray-200 font-bold text-gray-700 uppercase text-xs tracking-wider flex justify-between items-center">
-                                <span>Examiner Walkthrough</span>
+                        <div class="border border-gray-200 rounded-xl overflow-hidden flex flex-col shadow-sm">
+                            <div class="bg-gray-100 p-4 border-b border-gray-200 font-bold text-gray-700 uppercase text-xs tracking-wider flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                                    Examiner Walkthrough
+                                </div>
                                 <span class="text-indigo-600 font-bold">${data.walkthrough.total_marks_awarded}/${data.metadata.max_marks} Marks (${data.walkthrough.band_achieved})</span>
                             </div>
-                            <div class="p-6 flex-grow bg-gray-50 flex flex-col justify-between">
+                            <div class="p-6 flex-grow bg-white flex flex-col justify-between">
                                 
                                 <!-- Dynamic Step Content -->
-                                <div id="step-content-${qId}" class="min-h-[140px] flex items-center">
+                                <div id="step-content-${qId}" class="min-h-[160px] flex items-center">
                                     <!-- Injected via updateStepView() -->
                                 </div>
                                 
                                 <!-- Stepper Controls -->
-                                <div class="mt-6 flex items-center justify-between border-t border-gray-200 pt-5">
-                                    <button id="btn-prev-${qId}" class="px-4 py-2 bg-white border border-gray-300 rounded shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                                <div class="mt-8 flex items-center justify-between border-t border-gray-100 pt-6">
+                                    <button id="btn-prev-${qId}" class="px-5 py-2.5 bg-white border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                                         &larr; Previous
                                     </button>
-                                    <span id="step-progress-${qId}" class="text-sm font-bold text-gray-500"></span>
-                                    <button id="btn-next-${qId}" class="px-4 py-2 bg-indigo-600 text-white border border-transparent rounded shadow-sm text-sm font-medium hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                                    <div class="flex flex-col items-center">
+                                        <span id="step-progress-${qId}" class="text-sm font-bold text-gray-600"></span>
+                                        <div class="flex gap-1 mt-2" id="step-dots-${qId}">
+                                            <!-- Dots injected via updateStepView -->
+                                        </div>
+                                    </div>
+                                    <button id="btn-next-${qId}" class="px-5 py-2.5 bg-indigo-600 text-white border border-transparent rounded-lg shadow-sm text-sm font-medium hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                                         Next &rarr;
                                     </button>
                                 </div>
@@ -219,37 +357,126 @@
                         </div>
 
                     </div>
-                </div>
-            `;
+                `;
+            } else {
+                html += `
+                    <!-- Split View for Try It Yourself -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        
+                        <!-- Answer Column -->
+                        <div class="border border-gray-200 rounded-xl overflow-hidden flex flex-col shadow-sm min-h-[400px]">
+                            <div class="bg-gray-100 p-4 border-b border-gray-200 font-bold text-gray-700 uppercase text-xs tracking-wider flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                                Your Answer
+                            </div>
+                            <textarea id="user-answer-${qId}" class="w-full h-full flex-grow p-6 resize-none focus:ring-0 outline-none text-lg text-gray-800 leading-relaxed" placeholder="Type your answer here..." oninput="updateUserAnswer('${qId}', this.value)">${state.userAnswer.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</textarea>
+                        </div>
 
+                        <!-- Walkthrough Stepper Column -->
+                        <div class="border border-gray-200 rounded-xl overflow-hidden flex flex-col shadow-sm min-h-[400px]">
+                            <div class="bg-gray-100 p-4 border-b border-gray-200 font-bold text-gray-700 uppercase text-xs tracking-wider flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                                    Self-Marking Rubric
+                                </div>
+                            </div>
+                            <div class="p-6 flex-grow bg-white flex flex-col">
+                                ${!state.selfMarkMode ? `
+                                    <div class="text-center my-auto flex flex-col items-center justify-center h-full">
+                                        <div class="bg-blue-50 text-blue-500 rounded-full p-4 mb-4">
+                                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        </div>
+                                        <p class="text-gray-600 mb-6 max-w-xs mx-auto">Write your answer in the text box on the left. When you're finished, click below to see the examiner's criteria and mark your own work.</p>
+                                        <button onclick="toggleSelfMark('${qId}')" class="px-6 py-3 bg-blue-600 text-white font-bold rounded-lg shadow-sm hover:bg-blue-700 transition-colors focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                            I'm finished, let me self-mark!
+                                        </button>
+                                    </div>
+                                ` : `
+                                    <div class="space-y-3 flex-grow overflow-y-auto max-h-[350px]">
+                                        ${state.steps.map((step, idx) => `
+                                            <label class="flex items-start p-4 border rounded-xl cursor-pointer transition-colors ${state.userMarks[idx] ? 'bg-green-50 border-green-300' : 'bg-white border-gray-200 hover:bg-gray-50'}">
+                                                <div class="flex-shrink-0 mt-0.5">
+                                                    <input type="checkbox" class="w-5 h-5 rounded text-green-600 focus:ring-green-500 border-gray-300" ${state.userMarks[idx] ? 'checked' : ''} onchange="toggleMark('${qId}', ${idx}, this.checked)">
+                                                </div>
+                                                <div class="ml-3 flex-grow">
+                                                    <p class="text-sm font-medium text-gray-800">${step.explanation}</p>
+                                                    <span class="inline-block mt-2 text-xs font-bold px-2 py-1 bg-green-100 text-green-800 rounded">
+                                                        +${step.marks_gained} Mark${step.marks_gained > 1 ? 's' : ''}
+                                                    </span>
+                                                </div>
+                                            </label>
+                                        `).join('')}
+                                    </div>
+                                    <div class="mt-6 pt-5 border-t border-gray-200 flex justify-between items-center">
+                                        <span class="font-bold text-gray-700 uppercase tracking-wider text-sm">Total Achieved:</span>
+                                        <span class="text-2xl font-black text-indigo-600">${calculateUserScore(qId)} <span class="text-lg text-gray-400 font-bold">/ ${data.metadata.max_marks}</span></span>
+                                    </div>
+                                `}
+                            </div>
+                        </div>
+
+                    </div>
+                `;
+            }
+
+            html += `</div>`;
             card.innerHTML = html;
             container.appendChild(card);
             
-            // Set up button listeners
-            document.getElementById(`btn-prev-${qId}`).addEventListener('click', () => {
-                if (walkthroughState[qId].currentIndex > 0) {
-                    walkthroughState[qId].currentIndex--;
-                    updateStepView(qId);
-                }
-            });
+            // Set up button listeners ONLY if in Walkthrough view
+            if (state.activeTab === 'walkthrough') {
+                document.getElementById(`btn-prev-${qId}`).addEventListener('click', () => {
+                    if (walkthroughState[qId].currentIndex > 0) {
+                        walkthroughState[qId].currentIndex--;
+                        updateStepView(qId);
+                    }
+                });
 
-            document.getElementById(`btn-next-${qId}`).addEventListener('click', () => {
-                if (walkthroughState[qId].currentIndex < walkthroughState[qId].steps.length - 1) {
-                    walkthroughState[qId].currentIndex++;
-                    updateStepView(qId);
-                }
-            });
+                document.getElementById(`btn-next-${qId}`).addEventListener('click', () => {
+                    if (walkthroughState[qId].currentIndex < walkthroughState[qId].steps.length - 1) {
+                        walkthroughState[qId].currentIndex++;
+                        updateStepView(qId);
+                    }
+                });
 
-            // Initialize the first step view
-            updateStepView(qId);
+                // Initial view update
+                updateStepView(qId);
+            }
         }
+
+        // --- NEW TRY IT YOURSELF FUNCTIONS ---
+        function switchTab(qId, tabName) {
+            walkthroughState[qId].activeTab = tabName;
+            renderActiveQuestion();
+        }
+
+        function updateUserAnswer(qId, text) {
+            walkthroughState[qId].userAnswer = text;
+        }
+
+        function toggleSelfMark(qId) {
+            walkthroughState[qId].selfMarkMode = true;
+            renderActiveQuestion();
+        }
+
+        function toggleMark(qId, index, isChecked) {
+            walkthroughState[qId].userMarks[index] = isChecked;
+            renderActiveQuestion();
+        }
+
+        function calculateUserScore(qId) {
+            const state = walkthroughState[qId];
+            return state.userMarks.reduce((total, isMarked, idx) => {
+                return total + (isMarked ? state.steps[idx].marks_gained : 0);
+            }, 0);
+        }
+        // ------------------------------------
 
         // Generate the HTML for the answer, injecting spans for highlights
         function renderAnswerSegments(qId, segments) {
             return segments.map(seg => {
                 if (seg.highlight_id) {
-                    // Added border-transparent to prevent layout shifts when highlighting adds a border
-                    return `<span id="seg-${qId}-${seg.highlight_id}" class="highlight-segment rounded px-1 mx-0 border border-transparent">${seg.text}</span>`;
+                    return `<span id="seg-${qId}-${seg.highlight_id}" class="highlight-segment rounded px-1.5 py-0.5 mx-0 border border-transparent transition-all duration-300">${seg.text}</span>`;
                 } else {
                     return `<span>${seg.text}</span>`;
                 }
@@ -259,21 +486,24 @@
         // Handles rendering the correct step and applying highlights
         function updateStepView(qId) {
             const state = walkthroughState[qId];
+            if (state.activeTab !== 'walkthrough') return; // Only process DOM if tab is active
+
             const step = state.steps[state.currentIndex];
             const totalSteps = state.steps.length;
 
             // 1. Update the explanation content
             const contentContainer = document.getElementById(`step-content-${qId}`);
             contentContainer.innerHTML = `
-                <div class="flex items-start w-full transition-opacity duration-300">
-                    <div class="flex-shrink-0 bg-indigo-100 text-indigo-700 rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4 border border-indigo-200 text-lg shadow-sm">
+                <div class="flex items-start w-full">
+                    <div class="flex-shrink-0 bg-indigo-100 text-indigo-700 rounded-xl w-12 h-12 flex items-center justify-center font-black mr-5 border border-indigo-200 text-xl shadow-inner">
                         ${step.step_number}
                     </div>
                     <div class="flex-grow">
-                        <p class="text-base text-gray-800 leading-relaxed font-medium">${step.explanation}</p>
-                        <div class="mt-3">
-                            <span class="inline-block text-sm font-bold px-3 py-1 bg-green-100 text-green-800 rounded-full border border-green-200 shadow-sm">
-                                +${step.marks_gained} Mark${step.marks_gained > 1 ? 's' : ''} Gained
+                        <p class="text-lg text-gray-800 leading-relaxed font-medium">${step.explanation}</p>
+                        <div class="mt-4 inline-flex items-center">
+                            <span class="inline-block text-sm font-bold px-3 py-1 bg-green-100 text-green-800 rounded-full border border-green-200 shadow-sm flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                                ${step.marks_gained} Mark${step.marks_gained > 1 ? 's' : ''} Gained
                             </span>
                         </div>
                     </div>
@@ -285,27 +515,34 @@
             document.getElementById(`btn-prev-${qId}`).disabled = state.currentIndex === 0;
             document.getElementById(`btn-next-${qId}`).disabled = state.currentIndex === totalSteps - 1;
 
-            // 3. Manage Text Highlights in the Answer Column
-            // First, clear all existing highlights for this specific question
+            // 3. Update Progress Dots
+            const dotsContainer = document.getElementById(`step-dots-${qId}`);
+            dotsContainer.innerHTML = Array.from({length: totalSteps}).map((_, idx) => 
+                `<div class="w-2 h-2 rounded-full transition-colors duration-200 ${idx === state.currentIndex ? 'bg-indigo-600' : 'bg-gray-200'}"></div>`
+            ).join('');
+
+            // 4. Manage Text Highlights in the Answer Column
             document.querySelectorAll(`span[id^="seg-${qId}-"]`).forEach(el => {
                 el.classList.remove('bg-yellow-200', 'text-yellow-900', 'shadow-sm', 'border-yellow-400');
                 el.classList.add('border-transparent');
             });
 
-            // Then, apply highlight to the current step's target span
             if (step.highlight_id) {
                 const targetSpan = document.getElementById(`seg-${qId}-${step.highlight_id}`);
                 if (targetSpan) {
                     targetSpan.classList.remove('border-transparent');
                     targetSpan.classList.add('bg-yellow-200', 'text-yellow-900', 'shadow-sm', 'border-yellow-400');
+                    // Optional smooth scroll to highlight if answer box gets very long
+                    targetSpan.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }
             }
         }
 
-        // Simple toast notification for errors
+        // Simple toast notification
         function showToast(message, type = "info") {
             const toast = document.createElement('div');
-            toast.className = `fixed bottom-4 right-4 px-6 py-3 rounded shadow-lg text-white font-medium transition-opacity duration-300 opacity-0 z-50 ${type === 'error' ? 'bg-red-600' : 'bg-gray-800'}`;
+            const bgClass = type === 'error' ? 'bg-red-600' : type === 'success' ? 'bg-green-600' : 'bg-gray-800';
+            toast.className = `fixed bottom-4 right-4 px-6 py-3 rounded shadow-lg text-white font-medium transition-opacity duration-300 opacity-0 z-50 ${bgClass}`;
             toast.textContent = message;
             
             document.body.appendChild(toast);
